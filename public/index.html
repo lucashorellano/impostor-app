@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Juego del Impostor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="left">
+      <strong id="roomCodeTop">Sala — </strong>
+      <span id="roundLabel">Ronda 0</span>
+    </div>
+    <div class="center">
+      <span id="timerLabel">⏱ 00:00</span>
+    </div>
+    <div class="right">
+      <span id="scoreLabel">Marcador — Conocen: 0 | Impostores: 0</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Juego del Impostor</h1>
+
+    <section id="setup">
+      <div class="card">
+        <h2>Crear sala</h2>
+        <input id="nameCreate" placeholder="Tu nombre" />
+        <div class="inline">
+          <label for="durationMinutes">Duración de ronda (min, máx 5):</label>
+          <input id="durationMinutes" type="number" min="1" max="5" value="5" style="width:90px" />
+        </div>
+        <button id="btnCreate">Crear</button>
+      </div>
+      <div class="card">
+        <h2>Unirse a sala</h2>
+        <input id="roomCodeJoin" placeholder="Código (p.ej. ABC12)" maxlength="6" />
+        <input id="nameJoin" placeholder="Tu nombre" />
+        <button id="btnJoin">Unirse</button>
+      </div>
+    </section>
+
+    <section id="lobby" class="hidden">
+      <h2>Lobby — Sala <span id="roomCodeLabel"></span></h2>
+      <p id="hostBadge" class="badge hidden">Sos el HOST</p>
+      <div id="playersList"></div>
+      <div class="actions">
+        <button id="btnStart" class="primary hidden">Iniciar partida</button>
+      </div>
+      <p class="muted">La duración de ronda se toma de la pantalla inicial (máx 5 minutos).</p>
+    </section>
+
+    <section id="roles" class="hidden">
+      <h2>Roles</h2>
+      <div id="yourRole" class="roleBox"></div>
+      <div class="hint">
+        <p><strong>Dinámica:</strong> Los que ven la palabra deben dar pistas sin decirla directamente.
+          Los impostores intentan pasar desapercibidos. Cuando se termine el temporizador (o el HOST decida), empieza la <strong>votación</strong>.</p>
+      </div>
+      <div class="actions">
+        <button id="btnStartVoting" class="primary hidden">Iniciar votación (HOST)</button>
+      </div>
+    </section>
+
+    <section id="voting" class="hidden">
+      <h2>Votación</h2>
+      <p>Seleccioná a quién expulsar. Podés saltar el voto. La votación se cierra cuando todos votan o el HOST la cierra.</p>
+      <div id="votingList"></div>
+      <div class="actions">
+        <button id="btnEndVoting" class="primary hidden">Cerrar votación (HOST)</button>
+      </div>
+      <p id="votesProgress" class="muted"></p>
+    </section>
+
+    <section id="results" class="hidden">
+      <h2>Resultados</h2>
+      <div id="resultBox"></div>
+      <div class="scoreBoard card">
+        <h3>Marcador</h3>
+        <div id="scoreBoard"></div>
+      </div>
+      <div class="actions">
+        <button id="btnNextRound" class="primary hidden">Siguiente ronda (HOST)</button>
+        <button id="btnRestart" class="secondary hidden">Volver al lobby (HOST)</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>

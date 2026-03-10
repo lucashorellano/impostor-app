@@ -1,0 +1,38 @@
+
+:root{
+  --bg:#0f172a; /* slate-900 */
+  --card:#111827; /* gray-900 */
+  --text:#e5e7eb; /* gray-200 */
+  --muted:#94a3b8; /* slate-400 */
+  --primary:#0ea5e9; /* sky-500 */
+  --accent:#22c55e; /* green-500 */
+  --warn:#f59e0b; --danger:#ef4444;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
+header{display:flex;align-items:center;gap:.75rem;padding:1rem;border-bottom:1px solid #1f2937;position:sticky;top:0;background:rgba(15,23,42,.8);backdrop-filter:blur(6px)}
+header img{width:40px;height:40px}
+header h1{font-size:1.05rem;margin:0}
+main{max-width:980px;margin:0 auto;padding:1rem}
+.card{background:var(--card);border:1px solid #1f2937;border-radius:12px;padding:1rem;margin:1rem 0}
+h2{margin:.25rem 0 1rem 0;font-size:1.05rem}
+label{display:block;font-size:.9rem;color:var(--muted);margin:.25rem 0}
+input[type=text],input[type=number],select,textarea{width:100%;padding:.65rem .75rem;background:#0b1220;border:1px solid #1f2937;color:var(--text);border-radius:10px;outline:none}
+input::placeholder{color:#64748b}
+.row{display:flex;gap:.75rem;flex-wrap:wrap}
+.row>*{flex:1 1 280px}
+button{background:var(--primary);color:#001018;border:none;padding:.65rem .9rem;border-radius:10px;cursor:pointer;font-weight:600}
+button.secondary{background:#1f2937;color:var(--text)}
+button.ghost{background:transparent;border:1px solid #1f2937;color:var(--text)}
+button.warn{background:var(--warn);color:#1b1300}
+button.danger{background:var(--danger);color:#fff}
+.pill{display:inline-block;padding:.15rem .5rem;border-radius:999px;background:#0b1220;border:1px solid #1f2937;color:#cbd5e1;font-size:.75rem}
+.grid{display:grid;gap:.75rem}
+.grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.players{display:grid;gap:.5rem}
+.player{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.5rem;border:1px dashed #334155;border-radius:10px}
+.muted{color:var(--muted)}.small{font-size:.85rem}.success{color:var(--accent)}.warning{color:var(--warn)}.danger{color:var(--danger)}
+.footer{opacity:.7;font-size:.8rem;text-align:center;padding:1rem}
+code.inline{background:#0b1220;border:1px solid #1f2937;padding:.1rem .3rem;border-radius:6px}
+.list{padding-left:1rem}.list li{margin:.25rem 0}
+.hidden{display:none}.spacer{height:.5rem}

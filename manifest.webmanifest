@@ -1,0 +1,20 @@
+{
+  "name": "IBP LatAm – El Impostor",
+  "short_name": "IBP Impostor",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0ea5e9",
+  "icons": [
+    {
+      "src": "assets/icons/icon_192_0.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon_512_0.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

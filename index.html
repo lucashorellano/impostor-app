@@ -1,0 +1,110 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IBP LatAm · El Impostor – Host</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <meta name="description" content="Juego El Impostor – Edición IBP. Asigna roles, genera links privados y administra rondas online sin backend." />
+</head>
+<body>
+  <header>
+    <img src="assets/brand_logo.png" alt="Logo" />
+    <h1><span id="brand-name">IBP LatAm</span> · El Impostor – Online · <span class="muted small">Host</span></h1>
+    <div style="margin-left:auto"></div>
+    <button id="btn-instalar" class="secondary small hidden">Instalar App</button>
+  </header>
+  <main>
+    <div class="card">
+      <h2>Configuración de la partida</h2>
+      <div class="row">
+        <div>
+          <label>Nombre de la sala</label>
+          <input id="roomName" type="text" placeholder="Ej: IBP-LATAM" />
+        </div>
+        <div>
+          <label>Cantidad de jugadores (máx 30)</label>
+          <input id="numPlayers" type="number" min="3" max="30" value="10" />
+        </div>
+        <div>
+          <label>Modo</label>
+          <select id="mode">
+            <option value="links" selected>Links privados por jugador (sin backend)</option>
+            <option value="unico">Un dispositivo (host comparte pantalla)</option>
+          </select>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div>
+        <label>Nombre de cada jugador (opcional)</label>
+        <textarea id="names" rows="3" placeholder="Un nombre por línea"></textarea>
+      </div>
+      <div class="spacer"></div>
+      <div class="row">
+        <button id="btn-crear">Crear Sala</button>
+        <button id="btn-restaurar" class="secondary">Restaurar última sala</button>
+        <button id="btn-reset" class="ghost">Reset</button>
+      </div>
+    </div>
+
+    <div id="panel-sala" class="card hidden">
+      <h2>Sala <span id="sala"></span> · Ronda <span id="ronda">1</span></h2>
+      <div class="row">
+        <div>
+          <span class="pill" id="tema-actual">Tema: —</span>
+        </div>
+        <div>
+          <button id="btn-asignar">Asignar roles y tema</button>
+          <button id="btn-nueva-ronda" class="secondary">Nueva ronda</button>
+        </div>
+      </div>
+
+      <div class="spacer"></div>
+      <div class="grid cols-2">
+        <div>
+          <h3>Jugadores</h3>
+          <div id="lista-jugadores" class="players"></div>
+        </div>
+        <div>
+          <h3>Links privados</h3>
+          <p class="small muted">En modo <b>Links</b>, copiá y compartí el link privado por jugador (WhatsApp/Teams). El link revela su rol y el tema.</p>
+          <div id="links-privados" class="players"></div>
+          <div class="row">
+            <button id="btn-copiar-todos" class="secondary">Copiar todos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-ronda" class="card hidden">
+      <h2>Ronda en curso</h2>
+      <div class="row">
+        <div><span class="pill">Respuestas: <span id="cron-resp">00:00</span></span></div>
+        <div><button id="btn-timer-resp" class="secondary">▶ Iniciar (5:00)</button></div>
+      </div>
+      <div class="spacer"></div>
+      <div>
+        <h3>Votación</h3>
+        <p class="small muted">Cargá los votos recibidos (por chat o verbal). Opcional: mostrás en pantalla y todos votan levantando mano.</p>
+        <div id="tabla-votos" class="players"></div>
+        <div class="row">
+          <button id="btn-calcular">Calcular acusado</button>
+          <button id="btn-limpiar-votos" class="ghost">Limpiar votos</button>
+        </div>
+        <p id="resultado" class="small"></p>
+      </div>
+    </div>
+
+    <div id="panel-puntajes" class="card hidden">
+      <h2>Puntajes</h2>
+      <div id="tabla-puntajes" class="players"></div>
+    </div>
+
+    <div class="footer">IBP LatAm · Funciona como PWA. Para instalar tocá <code class="inline">Instalar App</code> (sólo en HTTPS).</div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
